@@ -54,7 +54,7 @@ void n_insert(int position, int x)
   {
     temp = temp -> next;
   }
-  node -> next = temp;
+  node -> next = temp -> next;
   temp -> next = node;
 
 }
