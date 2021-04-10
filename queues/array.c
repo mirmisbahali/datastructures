@@ -5,20 +5,27 @@
 
 int front = -1, rear = -1, arr[MAX_SIZE];
 
+int isFull(void)
+{
+    return (((rear + 1) % MAX_SIZE) == front);
+}
+
+int isEmpty(void)
+{
+    return (front == rear && front == -1);
+}
+
 void enqueue(int x)
 {
-    if (front == rear && front == -1)
+    if (isEmpty())
     {
         front = rear = 0;
-    } else if (rear == MAX_SIZE && front != 0) {
-        rear = (rear + 1) % 10;
-        front = rear;
-        rear = MAX_SIZE;
-        arr[front] = x;
+    } else if (isFull()) {
+        printf("\nArray is full\n");
         return;
 
     } else {
-        rear++;
+        rear = (rear + 1) % MAX_SIZE;
     }
     arr[rear] = x;
     return;
@@ -26,12 +33,25 @@ void enqueue(int x)
 
 void dequeue(void)
 {
-    if (front == rear && front == -1)
+    if (isEmpty())
     {
         printf("\nQueue is empty\n");
         return;
     }
     front++;
+}
+void Print(void)
+{
+    if (isEmpty()) return;
+
+    int i = front;
+    do
+    {
+        printf("%d ", arr[i]);
+        i++;
+    } while (((i + 1) % MAX_SIZE) != rear);
+
+    printf("\n");
 }
 
 int main(void)
@@ -40,12 +60,9 @@ int main(void)
     {
         enqueue(i);
     }
-    dequeue();
-    dequeue();
-    enqueue(6);
     printf("The array is: ");
-    for (int i = front; i <= rear; i++)
-        printf("%d ", arr[i]);
+    // dequeue();
+    Print();
 
     printf("\n");
 
