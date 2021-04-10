@@ -28,8 +28,8 @@ void enqueue(int x)
 
 void dequeue(void)
 {
-    struct node *temp = tail;
-    tail = temp -> next;
+    struct node *temp = head;
+    head = temp -> next;
     free(temp);
 }
 
