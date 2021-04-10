@@ -5,25 +5,26 @@ class Node {
     }
 }
 
-class Stack {
+class Queue {
     constructor() {
         this.head = null
+        this.tail = null
         this.size = 0
     }
 
-    push(el) {
+    enqueue(el) {
         const node = new Node(el)
         if (this.head == null) {
             this.head = node
+            this.tail = node
         } else {
-            node.next = this.head
-            this.head = node
+            this.tail.next = node
+            this.tail = node
         }
-        this.size++
     }
 
-    pop() {
-        const temp = this.head
+    dequeue() {
+        let temp = this.head
         this.head = temp.next
     }
 
@@ -36,15 +37,14 @@ class Stack {
     }
 }
 
-const li = new Stack()
+const li = new Queue()
 
-for (let i = 1; i <=10; i++) {
-    li.push(i)
+for (let i = 1; i <= 5; i++) {
+    li.enqueue(i)
 }
 
-// console.log(li)
 li.print()
 
-console.log("=================After Deleting an Element from stack================================")
-li.pop()
+console.log("=================After Dequeueing 1 el ================")
+li.dequeue()
 li.print()
