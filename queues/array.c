@@ -43,28 +43,30 @@ void dequeue(void)
 void Print(void)
 {
     if (isEmpty()) return;
-
+    printf("\n");
     int i = front;
-    do
+    while (((i-1) % MAX_SIZE) != rear)
     {
         printf("%d ", arr[i]);
         i++;
-    } while (((i + 1) % MAX_SIZE) != rear);
+    } 
 
     printf("\n");
 }
 
 int main(void)
 {
-    for (int i = 0; i <= MAX_SIZE; i++)
+    for (int i = 0; i < MAX_SIZE; i++)
     {
         enqueue(i);
     }
-    printf("The array is: ");
-    // dequeue();
     Print();
 
-    printf("\n");
+    dequeue();
+
+    Print();
+
+
 
     return 0;
 }
