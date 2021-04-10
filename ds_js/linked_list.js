@@ -22,9 +22,20 @@ class LinkedList {
                 current = current.next
             }
             current.next = node
+            this.size++
             // console.log(current)
         }
     }
+
+    delete() {
+        if (this.head == null) {
+            console.log("Linked List is empty")
+        } else {
+            console.log(`Deleting ${this.head.data}`)
+            this.head = this.head.next
+        }
+    }
+
     print() {
         let current = this.head
         while (current) {
@@ -39,3 +50,6 @@ li.add(3)
 li.add(4)
 li.add(5)
 li.print()
+li.delete()
+li.print()
+console.log(li)
