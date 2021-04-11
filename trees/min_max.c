@@ -1,5 +1,4 @@
-// Implementing Binary Search Tree
-
+// Finding Minimum and Maximum number in a Binary Search Tree
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -35,36 +34,6 @@ int search(struct node *root, int x)
     else if (root->data == x) return 1;
     else if (x <= root->data) return search(root->left, x);
     else return search(root->right, x);
-}
-
-int findMin(struct node *root)
-{
-    if (root == NULL)
-    {
-        printf("Error: Tree is Empty\n");
-        return -1;
-    }
-    
-    while (root->left != NULL)
-    {
-        root = root->left;
-    }
-    return root->data;
-}
-
-int findMax(struct node *root)
-{
-    if (root == NULL)
-    {
-        printf("Error: Tree is Empty\n");
-        return -1;
-    }
-    
-    while (root->right != NULL)
-    {
-        root = root->right;
-    }
-    return root->data;
 }
 
 int main(void)
