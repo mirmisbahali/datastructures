@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
 struct node
 {
     int data;
@@ -67,6 +68,23 @@ int findMax(struct node *root)
     return root->data;
 }
 
+int Max(int x, int y)
+{
+    if (x > y) return x;
+    return y;
+}
+
+int findHeight(struct node *root)
+{
+    if (root == NULL) return -1;
+
+    int leftHeight, rightHeight;
+    leftHeight = findHeight(root->left);
+    rightHeight = findHeight(root->right);
+
+    return Max(leftHeight, rightHeight) + 1;
+}
+
 int main(void)
 {
     struct node *root = NULL;
@@ -82,6 +100,8 @@ int main(void)
         printf("Found\n");
     else
         printf("Not Found\n");
+    
+    printf("Height of the Tree: %d\n", findHeight(root));
      
     return 0;
 }
