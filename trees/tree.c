@@ -85,6 +85,28 @@ int findHeight(struct node *root)
     return Max(leftHeight, rightHeight) + 1;
 }
 
+void Preorder(struct node *root)
+{
+  if (root == NULL) return;
+  printf("%d ", root->data);
+  Preorder(root->left);
+  Preorder(root->right);
+}
+void Inorder(struct node *root)
+{
+  if (root == NULL) return;
+  Inorder(root->left);
+  printf("%d ", root->data);
+  Inorder(root->right);
+}
+void Postorder(struct node *root)
+{
+  if (root == NULL) return;
+  Postorder(root->left);
+  Postorder(root->right);
+  printf("%d ", root->data);
+}
+
 int main(void)
 {
     struct node *root = NULL;
@@ -94,14 +116,21 @@ int main(void)
     root = insert(root, 3);
     root = insert(root, 40);
 
-    printf("Search a number: ");
-    scanf("%d", &number);
-    if (search(root, number))
-        printf("Found\n");
-    else
-        printf("Not Found\n");
+    // printf("Search a number: ");
+    // scanf("%d", &number);
+    // if (search(root, number))
+    //     printf("Found\n");
+    // else
+    //     printf("Not Found\n");
     
     printf("Height of the Tree: %d\n", findHeight(root));
+
+    Preorder(root);
+    printf("\n");
+    Inorder(root);
+    printf("\n");
+    Postorder(root);
+    printf("\n");
      
     return 0;
 }
