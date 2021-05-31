@@ -1,4 +1,8 @@
 // Move all negative numbers to beginning and positive to end with constant extra space
+
+/*
+This problem can be solved using the Partition logic of Quick Sort Algorithm
+*/
 #include<stdio.h>
 
 void Partition(int *arr, int n)
