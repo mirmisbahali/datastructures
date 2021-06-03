@@ -11,11 +11,13 @@ struct Node
 
 
 
-void reverse(struct Node **head, int k)
+struct Node* reverse(struct Node *head, int k)
 {
-    int count=0;
-    struct Node *current=*head, *first=*head, *prev=NULL, *next=NULL;
-    while(count < k)
+    if (!head) return NULL;
+    
+    int count = 0;
+    struct Node *current = head, *prev = NULL, *next = NULL;
+    while (count < k && current != NULL)
     {
         next = current -> next;
         current -> next = prev;
@@ -23,19 +25,9 @@ void reverse(struct Node **head, int k)
         current = next;
         count++;
     }
-    printf("Head = %d\n", (*head)->data);
-    struct Node *last = *head;
-    *head = prev;
-    prev = NULL;
-    while(current != NULL)
-    {
-        next = current -> next;
-        current -> next = prev;
-        prev = current;
-        current = next;
-        count++;
-    }
-    last->next = prev;
+    if (next != NULL) head->next = reverse(next, k);
+
+    return prev;
 }
 
 
@@ -62,14 +54,14 @@ void Print(struct Node *head)
 int main(void)
 {
     struct Node *head = NULL;
-    int k = 4;
+    int k = 2;
 
-    for (int i = 1; i <= 8; i++)
+    for (int i = 1; i <= 20; i++)
         insert(&head, i);
 
     Print(head);
 
-    reverse(&head, k);
+    head = reverse(head, k);
 
     Print(head);
 
