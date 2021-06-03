@@ -14,7 +14,7 @@ struct Node
 void reverse(struct Node **head, int k)
 {
     int count=0;
-    struct Node *current=*head, *prev=NULL, *next=NULL;
+    struct Node *current=*head, *first=*head, *prev=NULL, *next=NULL;
     while(count < k)
     {
         next = current -> next;
@@ -23,17 +23,19 @@ void reverse(struct Node **head, int k)
         current = next;
         count++;
     }
-    struct Node *first_end = prev;
-    current = current -> next;
+    printf("Head = %d\n", (*head)->data);
+    struct Node *last = *head;
+    *head = prev;
+    prev = NULL;
     while(current != NULL)
     {
         next = current -> next;
         current -> next = prev;
         prev = current;
         current = next;
+        count++;
     }
-    *head = prev;
-    prev = first_end;
+    last->next = prev;
 }
 
 
