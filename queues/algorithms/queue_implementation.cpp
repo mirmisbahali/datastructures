@@ -5,15 +5,15 @@ using namespace std;
 struct node
 {
     int data;
-    struct node* next;
+    node* next;
 };
 
-struct node *front = NULL;
-struct node *last = NULL;
+node *front = NULL;
+node *last = NULL;
 
 void enqueue(int x)
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    node *temp = (node*)malloc(sizeof(node));
     temp -> data = x;
     if (front == NULL)
     {
@@ -33,7 +33,7 @@ void enqueue(int x)
 
 void dequeue()
 {
-    struct node *temp = front;
+    node *temp = front;
     front = temp -> next;
     free(temp);
 
@@ -42,7 +42,7 @@ void dequeue()
 
 void Print(void)
 {
-    struct node *temp = front;
+    node *temp = front;
 
     printf("The list is: ");
     while (temp != NULL)
